@@ -1,0 +1,36 @@
+<!-- interpolation -->
+<hinv-header></hinv-header>
+<hinv-header></hinv-header>
+<hinv-header></hinv-header>
+<h1>welcome to {{hotelName}}</h1>
+<!-- property binding -->
+
+
+<div [hidden]="hiderooms">
+  Number of Rooms
+<div [innerText]="numberofRooms" [ngStyle]="{'color':rooms.availableRooms>0?'green':'red'}"></div>
+</div>
+
+<div *ngIf="selectedRooms">
+  {{selectedRooms|json}}
+</div>
+<div>
+  <button class="btn btn-success" (click)="addRoom()">Add Room</button>
+</div>
+<!-- Dire
+  ctives -->
+{{pricefilter|json}}
+  <div>
+   <input type="number" class="form-control" placeholder="price" [formControl]="pricefilter">
+  </div>
+<!-- ngIf directive -->
+<div *ngIf="hiderooms">
+  RoomsList:
+ <hinv-rooms-list [rooms]="roomsList" [price]="pricefilter.value" [title]="title"(roomsselected)="selectRoom($event)"></hinv-rooms-list>
+</div>
+{{myObservable$|async|json}}
+<!-- event binding -->
+ <h1>{{geterr$|async}}</h1>
+<button (click)="toggle()">Toggle</button>
+<h1>{{totalbytes}} loaded</h1>
+<router-outlet></router-outlet>

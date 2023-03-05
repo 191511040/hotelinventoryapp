@@ -1,0 +1,36 @@
+
+
+{{roomsform.pristine|json}}
+{{roomsform.dirty|json}}
+
+{{roomsform.valid|json}}
+{{roomsform.invalid|json}}
+{{roomsform.value|json}}
+
+<form  #roomsform="ngForm"(ngSubmit)="Addroom(roomsform)">
+  <div class="form-group">
+    <input  class="form-control"type="text" name="roomType"placeholder="roomType"[ngModelOptions]="{updateOn:'blur'}" [(ngModel)]="rooms.roomType" required >
+    <div *ngIf="roomamenties.dirty&&roomamenties.errors?.['minlength']">
+      <h1>Min length of 10 charceters is required</h1>
+    </div>
+  </div>
+  <div class="form-group">
+    <input #roomamenties="ngModel"  class="form-control"type="text" name="amenities" placeholder="Amenities" [(ngModel)]="rooms.amenities"required minlength="10" >
+  </div>
+  <div class="form-group">
+    <input  class="form-control"type="number" name="price" placeholder="Room price" [(ngModel)]="rooms.price"required>
+  </div>
+  <div class="form-group">
+    <input  class="form-control"type="text" name="photos" placeholder="photos(provide link)" [(ngModel)]="rooms.photos"required>
+  </div>
+  <div class="form-group">
+    <input  class="form-control"type="text" name="checkinTime" placeholder="checkinTime" [(ngModel)]="rooms.checkInTime"required>
+  </div>
+  <div class="form-group">
+    <input  class="form-control"type="text" name="rating" placeholder="Rating" [(ngModel)]="rooms.checkOutTime">
+  </div>
+  <div class="form-group">
+    <button [disabled]="
+    roomsform.invalid"class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>
